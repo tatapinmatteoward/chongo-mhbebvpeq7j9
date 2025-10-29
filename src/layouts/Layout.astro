@@ -1,0 +1,93 @@
+---
+// Import global styles
+import '../styles/global.css';
+
+// Props interface
+interface Props {
+  title: string;
+}
+
+// Component props
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="PCFixHub - Fix Your PC Errors in Minutes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title} | PCFixHub</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen text-white">
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 backdrop-blur-md bg-white/10 border-b border-white/20 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center py-4">
+        <!-- Branding -->
+        <div class="flex items-center">
+          <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            PCFixHub
+          </h1>
+          <span class="ml-2 text-sm text-gray-300 hidden sm:block">Fix Your PC Errors in Minutes</span>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex space-x-8">
+          <a href="/" class="text-gray-300 hover:text-white transition duration-300">Home</a>
+          <a href="/about" class="text-gray-300 hover:text-white transition duration-300">About</a>
+          <a href="/blog" class="text-gray-300 hover:text-white transition duration-300">Blog</a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <input type="checkbox" id="mobile-menu" class="hidden peer">
+          <label for="mobile-menu" class="block cursor-pointer">
+            <svg class="w-6 h-6 text-white peer-checked:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg class="w-6 h-6 text-white hidden peer-checked:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </label>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div class="md:hidden peer-checked:block hidden backdrop-blur-md bg-black/50 rounded-lg mt-2 p-4">
+        <a href="/" class="block py-2 text-gray-300 hover:text-white transition duration-300">Home</a>
+        <a href="/about" class="block py-2 text-gray-300 hover:text-white transition duration-300">About</a>
+        <a href="/blog" class="block py-2 text-gray-300 hover:text-white transition duration-300">Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="flex-1">
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-blue-900 via-purple-900 to-blue-900 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <h2 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            PCFixHub
+          </h2>
+          <p class="text-gray-300 mt-1">Fix Your PC Errors in Minutes</p>
+        </div>
+        <div class="flex space-x-6">
+          <a href="/" class="text-gray-300 hover:text-white transition duration-300">Home</a>
+          <a href="/about" class="text-gray-300 hover:text-white transition duration-300">About</a>
+          <a href="/blog" class="text-gray-300 hover:text-white transition duration-300">Blog</a>
+        </div>
+      </div>
+      <div class="mt-8 border-t border-gray-600 pt-4 text-center">
+        <p class="text-gray-400">&copy; 2023 PCFixHub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
