@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getEntry } from 'astro:content';
+
+const homeEntry = await getEntry('pages', 'home');
+if (!homeEntry) throw new Error('Home page not found');
+
+const { Content } = await homeEntry.render();
+---
+
+<Layout title="PCFixHub - Fix Your PC Errors in Minutes">
+  <main class="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white">
+    <!-- Hero Section -->
+    <section class="flex items-center justify-center min-h-[80vh] px-4">
+      <div class="text-center max-w-4xl">
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500 bg-clip-text text-transparent">
+          Fix Your PC Errors in Minutes
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-300 mb-8">
+          Welcome to PCFixHub, your go-to blog for quick and easy PC troubleshooting guides. From blue screens to slow performance, we've got you covered.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/blog/" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
+            Explore Blog
+          </a>
+          <a href="#content" class="border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 font-semibold py-3 px-8 rounded-lg transition-all duration-300">
+            Learn More
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Section -->
+    <section id="content" class="py-16 px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-8 md:p-12 border border-white/20">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center bg-gradient-to-r from-pink-400 to-red-500 bg-clip-text text-transparent">
+            Latest Insights
+          </h2>
+          <div class="prose prose-invert prose-lg max-w-none">
+            <Content />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
